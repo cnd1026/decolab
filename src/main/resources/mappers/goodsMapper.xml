@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.decolab.mapper.GoodsMapper">
+		
+	<insert id="create">
+		insert into goods (writer, subject, size, material, color, design_file, date, wantday, comment, service, zip_code, addr1, addr2, addr3, addr4 ) 
+		values (#{writer},#{subject},#{size},#{material},#{color},#{design_file}, now(), #{wantday},#{comment},#{service},#{zip_code},#{addr1},#{addr2},#{addr3},#{addr4})
+	</insert>
+		
+	<select id="readPage" resultType="com.decolab.domain.GoodsVO">
+		select * from goods where goods_no = #{goods_no}
+	</select>	
+	
+	<insert id="addAttach">
+		insert into goods_attach (fullName, writer) values (#{fullName},LAST_INSERT_ID())
+	</insert>
+	
+	<update id="update">
+		update goods set writer=#{writer}, subject=#{subject}, size=#{size}, material=#{material}, color=#{color}, design_file=#{design_file},
+		wantday=#{wantday}, comment=#{comment}, service=#{service}, zip_code=#{zip_code}, addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3}, addr4=#{addr4}  
+		where goods_no = #{goods_no}
+	</update>
+	
+	<delete id="delete">
+		delete from goods where goods_no = #{goods_no}
+	</delete>
+	
+	<select id="listAll" resultType="GoodsVO">
+	<![CDATA[
+		select * from goods where goods_no > 0 
+		order by goods_no desc, date desc 
+	]]>
+	</select>
+	
+	<select id="listAll2" resultType="GoodsVO">
+	<![CDATA[
+		select g.goods_no,g.writer,g.subject,g.date,g.processing,
+	c.goods_no,c.comment_name from goods as g join comment as c
+	 where g.goods_no = c.goods_no;
+
+	]]>
+	</select>
+	
+	<select id="listAll3" resultType="GoodsVO">
+	<![CDATA[
+		select g.goods_no,g.writer,g.subject,g.date,g.processing,
+	c.goods_no,c.comment_name from goods as g join comment as c
+	 where g.goods_no = c.goods_no;
+
+	]]>
+	</select>
+	
+	<select id="listAll4" resultType="GoodsVO">
+	<![CDATA[
+		select g.goods_no,g.writer,g.subject,c.goods_no,c.comment_name 
+		from goods as g join comment as c where g.goods_no = c.goods_no;
+	]]>
+	</select>
+	
+	<select id="listAll5" resultType="GoodsVO">
+	<![CDATA[
+		select g.goods_no,g.writer,g.subject,c.goods_no,c.comment_name 
+		from goods as g join comment as c where g.goods_no = c.goods_no;
+	]]>
+	</select>
+	
+	<select id="myList" resultType="GoodsVO">
+	<![CDATA[
+		select * from goods where writer = #{mem_id};
+	]]>
+	</select>
+	
+	<select id="listPage" resultType="GoodsVO">
+	<![CDATA[
+		select * from goods where goods_no > 0 
+		order by goods_no desc, date desc limit #{page}, 5
+	]]>
+	</select>
+	
+	<select id="listCriteria" resultType="GoodsVO">
+	<![CDATA[
+		select * from goods where goods_no > 0 
+		order by goods_no desc, date desc limit #{pageStart}, #{perPageNum}
+	]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+	<![CDATA[
+		select count(goods_no) from goods where goods_no > 0 
+	]]>
+	</select>
+	
+	<select id="listSearch" resultType="GoodsVO">
+ 		<![CDATA[
+		select * from goods where goods_no > 0 
+ 		]]>
+
+		<include refid="search"></include>
+
+ 		<![CDATA[
+		order by goods_no desc, date desc limit #{pageStart}, #{perPageNum}
+ 		]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+ 		<![CDATA[
+		select count(goods_no) from goods where goods_no > 0 
+ 		]]>  		
+
+ 		<include refid="search"></include>
+	</select>
+	
+ 
+ 	<!-- 댓글 리스트 -->
+	<select id="list" resultType="com.decolab.domain.CommentVO">
+		
+		select * from comment where goods_no=#{goods_no}
+		order by goods_no desc
+	</select>
+ 
+ 
+ 
+	<insert id="insertComment" parameterType="CommentVO">
+	    insert into comment (goods_no, comment_id, writer, comment_name, comment_price, comment_content ) 
+			values (#{goods_no},#{comment_id}, #{writer}, #{comment_name},#{comment_price},#{comment_content})       
+	 </insert>
+	 
+	<update id="updateComment" parameterType="CommentVO">
+	    UPDATE COMMENT SET comment_content=#{comment_content}, comment_price=#{comment_price}
+	        WHERE
+	            comment_no = #{comment_no}
+	 </update>
+	 
+	<delete id="deleteComment" parameterType="int">
+	    DELETE FROM COMMENT WHERE comment_no = #{comment_no}
+	 
+	</delete>
+	
+	<!-- 견적 채택시 진행상황 입금전으로 바뀜 -->
+	<update id="updateProgress" parameterType="CommentVO">
+	    UPDATE goods SET processing="입금전" WHERE
+	            goods_no = #{goods_no}
+	 </update>
+
+
+
+	
+	<sql id="search">
+	<if test="searchType != null" > 
+		<if test="searchType == 't'.toString()">
+			and title like CONCAT( #{keyword}, '%')
+		</if>
+		<if test="searchType == 'c'.toString()">
+			and content like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType == 'w'.toString()">
+			and writer like CONCAT('%', #{keyword}, '%')
+		</if>     
+		<if test="searchType == 'tc'.toString()">
+			and ( title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
+		</if>        
+		<if test="searchType == 'cw'.toString()">
+			and ( content like CONCAT('%', #{keyword}, '%') OR writer like CONCAT('%', #{keyword}, '%'))
+		</if>      
+		<if test="searchType == 'tcw'.toString()">
+			and 
+			( title like CONCAT('%', #{keyword}, '%') 
+			OR content like CONCAT('%', #{keyword}, '%') 
+			OR writer like CONCAT('%', #{keyword}, '%'))
+		</if>             
+
+	</if>
+	</sql>
+</mapper>

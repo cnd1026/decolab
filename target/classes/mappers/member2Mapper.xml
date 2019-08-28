@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.decolab.mapper.Member2Mapper">
+
+	<!-- 일반가입 -->
+	<insert id="insertMember">
+		insert into member2 (mem_id, mem_password, mem_name, mem_mail,mem_level) values 
+		(#{mem_id},#{mem_password},#{mem_name},#{mem_mail},1)
+	</insert>
+	
+	<!-- 판매자가입 -->
+	<insert id="insertSMember">
+		insert into member2 
+				(mem_id, mem_password, mem_name, mem_mail,mem_code,mem_date,mem_zip_code,mem_comment)
+			 values 
+				(#{mem_id},#{mem_password},#{mem_name},#{mem_mail},#{mem_code},#{mem_date},#{mem_zip_code},#{mem_comment})
+	</insert>
+	
+	<insert id="addAttach">
+		insert into member_attach (fullName, mem_id) values (#{fullName},LAST_INSERT_ID())
+	</insert>
+	<update id="updateSMember">
+		update member2,member_attach set member2.mem_photo = member_attach.fullName where member2.regdate = member_attach.regdate;
+	</update>
+	<update id="updateaddAttach">
+		update member_attach,member2 set member_attach.mem_id = member2.mem_id where member2.regdate = member_attach.regdate;
+	</update>
+	<!-- 로그인 -->
+	<select id="login2" resultType="String">
+		select * from member2 where mem_id = #{mem_id} and mem_password = #{mem_password}
+	</select>
+	
+	<!-- 정보 -->
+	<select id="viewMember2" resultType="Member2VO">
+		select * from member2 where mem_id = #{mem_id}
+	</select>
+	<select id="read" resultType="com.decolab.domain.Member2VO">
+	select * from member2 where mem_id = #{mem_id}
+	</select>
+	<select id="getAttach" resultType="string">
+		select fullName from member_attach where mem_id = #{mem_id}
+	</select>
+	<!-- 회원수정 -->
+	<update id="modifyMember">
+		update member2 
+		set
+			mem_password = #{mem_password},
+			mem_name = #{mem_name},
+			mem_mail = #{mem_mail},
+			mem_code = #{mem_code},
+			mem_date = #{mem_date},
+			mem_zip_code = #{mem_zip_code},
+			mem_comment = #{mem_comment}
+		where
+			mem_id = #{mem_id}
+	</update>
+</mapper>
