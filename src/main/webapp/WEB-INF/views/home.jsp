@@ -289,6 +289,7 @@
 
 		that.append(str);
 		that.get(0).submit();
+		//수정
 	});
 	
 	//	
