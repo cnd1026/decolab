@@ -8,24 +8,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <script type="text/javascript">
-var goods_no = '${goodsVO.goods_no}'; //게시글 번호 
+//var goods_no = '${goodsVO.goods_no}'; //게시글 번호 
 //댓글 목록 
-$(function(){
     
     commentList();
-});
 
 function commentList(){
 	var bno = '${goodsVO.goods_no}'; //게시글 번호
-	//console.log("====bno===");
-	//console.log(bno);
+	//bno = number(bno);
+	console.log("====bno===");
+	console.log(bno);
 	
     $.ajax({
         type : 'get',
         url : '/comment/list/'+bno,
         contentType: "application/json;charset=UTF-8",
         success : function(comment){
-        	console.log("====리스트 테스트===");
+        	//console.log("====리스트 테스트===");
         	var seller = $('#comment_id').val();
         	
         	$(".commentList").empty();
@@ -35,12 +34,26 @@ function commentList(){
          //   console.log(comment.goods_no);
     		//console.log(${sessionScope.mem_id});
             
+    		//체크박스 하나만 선택할수 있게
+			$(document).ready(function() {
+			    $('input[type="checkbox"][name="progress"]').click(function(){
+			        //click 이벤트가 발생했는지 체크
+			        if ($(this).prop('checked')) {
+			            //checkbox 전체를 checked 해제후 click한 요소만 true지정
+			            $('input[type="checkbox"][name="progress"]').prop('checked', false);
+			            $(this).prop('checked', true);
+			        }
+			    });
+			});
+    		//기본적으로 그냥 회원일때
             if (${sessionScope.mem_level.equals("1")}){	
-            	a += '<form><div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-            	a += '<label><div class="commentInfo'+comment.comment_no+'">'+' 작성자 : '+comment.comment_name + '<p class="card-subtitle mb-2 text-muted"><small> <input type="checkbox" value="'+comment.goods_no+'" name="progress">입찰금액 : ('+ comment.comment_price +' 원)</small></p>';
+            	//console.log("레벨이 1 그리고");
+            	//console.log("test중입니다.");
+            	a += '<form id="updateProgressForm" name="updateProgressForm"><div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+            	a += '<label><div class="commentInfo'+comment.comment_no+'" id="progress">'+' 작성자 : '+comment.comment_name + '<p class="card-subtitle mb-2 text-muted"><small> <input type="checkbox" value="'+comment.comment_no+'" name="progress" id="progress">입찰금액 : ('+ comment.comment_price +' 원)</small></p>';
             	a += '<div class="commentContent'+comment.comment_no+'"> <p>'+comment.comment_content +'</p></div>';
-            	a += '</div></label><button type="submit" name="updateprogress" value="'+comment.comment_no+'" id="updateprogressbtn" onclick="updateProgress('+comment.comment_no+');" class="btn btn-info btn-sm">견적채택</button></div></form>';
-            }else{
+            	a += '</div></label><button name="updateProgressBtn" type="button" id="updateProgressBtn" class="btn btn-info btn-sm" onclick="updateProgress();">견적채택</button></div></form>';
+            }else{            	
             	var contentV = comment.comment_content.replace(/(?:\r\n|\r|\n)/g, '<br>');
             	console.log("레벨이 10 또는 2 그리고");
             	console.log("아이디가 일치하냐 안하냐");	
@@ -69,18 +82,30 @@ function commentList(){
 }
 
 //견적 채택
-function updateProgress(comment_no) {
+	function updateProgress() {
+        var updateProgress = [];
+        $("input[name='progress']:checked").each(function(i){
+        	updateProgress.push($(this).val());
+        });
+       // console.log(updateProgress);
+       // alert(updateProgress);
+        var bno2 = '${goodsVO.goods_no}';
+        alert(bno2);
+        
+        
         $.ajax({
-            url : '/comment/updateProgress/'+goods_no,
+            url : '/comment/updateProgress/'+updateProgress,
             type : 'get',
-            data : {'comment_no' : comment_no, 'goods_no' : goods_no},
+            contentType: "application/json;charset=UTF-8",
+            data : {'updateProgress' :updateProgress, 'bno2':bno2},
             success : function(data){
-                if(data) commentList(comment_no); //댓글 삭제후 목록 출력 
+            	//console.log(data);
+                if(data) commentList(comment_no);                     
             }
-        });  
-    commentList(); //페이지 로딩시 댓글 목록 출력     
+        });
+    //});
+    //commentList(); //페이지 로딩시 댓글 목록 출력     
 }
- 
 //댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
 function commentUpdate(comment_no, comment_content, comment_price){
     var a ='';
@@ -126,7 +151,7 @@ function commentDelete(comment_no){
 $(function() {
     $("#insertCommentBtn").click(function(){ //댓글 등록 버튼 클릭시 
         var insertData = $("#insertCommentForm").serialize(); //insertCommentForm의 내용을 가져옴
-        //alert(JSON.stringify(insertData));
+        alert(JSON.stringify(insertData));
         
         $.ajax({
             url : '/comment/insertVisitor',
@@ -144,7 +169,7 @@ $(function() {
     });
     commentList(); //페이지 로딩시 댓글 목록 출력 
     
-});
+})
 </script>
 
 <c:if test="${sessionScope.mem_level==2 || sessionScope.mem_level==10}">
@@ -152,7 +177,7 @@ $(function() {
 	<label for="cmtContent">견적</label>
 	<form name="insertCommentForm" id="insertCommentForm">
 		<div class="input-group">
-			<input type="hidden" name="goods_no" value="${goodsVO.goods_no }" />
+			<input type="hidden" id="goods_no" name="goods_no" value="${goodsVO.goods_no }" />
 			<input type="hidden" id="writer" name="writer" value="${goodsVO.writer }" />
 			<input type="hidden" id="comment_id" name="comment_id" value="${sessionScope.mem_id }" />
 			<input type="hidden" id="comment_name" name="comment_name" value="${sessionScope.mem_name }" />

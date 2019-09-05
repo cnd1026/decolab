@@ -141,11 +141,15 @@
 	
 	<!-- 견적 채택시 진행상황 입금전으로 바뀜 -->
 	<update id="updateProgress" parameterType="CommentVO">
-	    UPDATE goods SET processing="입금전" WHERE
-	            goods_no = #{goods_no}
-	 </update>
+	    UPDATE goods SET processing="입금전" WHERE goods_no = #{bno2}
+	</update>
+	
+	<insert id="updateProgress2" parameterType="CommentVO">
+		insert into account (goods_no, comment_no, account_name, account_price, account_comment, writer)
+		select goods_no, comment_no, comment_name, comment_price, comment_content, writer from comment where comment_no = #{bno}
+	</insert>
 
-
+	
 
 	
 	<sql id="search">

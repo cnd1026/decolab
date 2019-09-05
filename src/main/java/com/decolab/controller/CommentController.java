@@ -19,12 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.decolab.domain.CommentVO;
 import com.decolab.domain.Member2VO;
 import com.decolab.service.CommentService;
 
-@Controller
+@RestController
 @RequestMapping(value = "/comment/*")
 public class CommentController {
  
@@ -107,14 +108,17 @@ public class CommentController {
         return result;
     }
     
-    //견적 채택
-    @RequestMapping(value = "/updateProgress/{goods_no}")
-    private @ResponseBody HashMap<String, Object> updateProgress(@RequestParam int goods_no) throws Exception {
- 
+    //견적 채택 
+	@RequestMapping(value = "/updateProgress/{updateProgress}", method = RequestMethod.GET) /*@RequestParam String updateProgress*/
+    private @ResponseBody HashMap<String, Object> updateProgress(@PathVariable("updateProgress")int updateProgress, @RequestParam int bno2 ) throws Exception {
+    	System.out.println("333 : "+updateProgress);
         HashMap<String, Object> result = new HashMap<>();
         System.out.println("ddd");
+        int bno = updateProgress;
+        System.out.println(bno2);
         try {
-            commentService.updateProgress(goods_no);
+        	commentService.updateProgress(bno2);
+        	commentService.updateProgress2(bno);
             result.put("status", true);
         } catch (Exception e) {
             result.put("status", false);
@@ -122,6 +126,13 @@ public class CommentController {
         }
         return result;
     }
+
+
+
+	private int number(String updateProgress) {
+		// TODO 자동 생성된 메소드 스텁
+		return 0;
+	}
  
 }
 
