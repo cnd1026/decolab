@@ -48,9 +48,8 @@ public class CommentServiceImpl implements CommentService{
     }
     
     @Override
-    public void updateProgress2(int bno) throws Exception {
-        
-        dao.updateProgress2(bno);
+    public int updateProgress2(int bno) throws Exception {
+        return dao.updateProgress2(bno);
     }
 
 

@@ -69,7 +69,7 @@
 	
 	<select id="myList" resultType="GoodsVO">
 	<![CDATA[
-		select * from goods where writer = #{mem_id};
+		select * from goods where writer = #{mem_id} order by goods_no desc
 	]]>
 	</select>
 	

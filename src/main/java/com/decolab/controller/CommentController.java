@@ -111,14 +111,14 @@ public class CommentController {
     //견적 채택 
 	@RequestMapping(value = "/updateProgress/{updateProgress}", method = RequestMethod.GET) /*@RequestParam String updateProgress*/
     private @ResponseBody HashMap<String, Object> updateProgress(@PathVariable("updateProgress")int updateProgress, @RequestParam int bno2 ) throws Exception {
-    	System.out.println("333 : "+updateProgress);
         HashMap<String, Object> result = new HashMap<>();
-        System.out.println("ddd");
         int bno = updateProgress;
-        System.out.println(bno2);
+        System.out.println("댓글번호"+bno);
+        System.out.println("글번호"+bno2);
         try {
         	commentService.updateProgress(bno2);
-        	commentService.updateProgress2(bno);
+        	int result9999 = commentService.updateProgress2(bno);
+        	System.out.println("result9999 : "+result9999);
             result.put("status", true);
         } catch (Exception e) {
             result.put("status", false);

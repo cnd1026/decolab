@@ -30,6 +30,8 @@
 					</td>
 				</tr>
 				<c:forEach var="goodsVO" items="${list}">
+				<!-- 입찰중일 경우에만 판매자 진입가능 -->
+					<c:if test="${goodsVO.processing eq '입찰중' }">
 					<tr>
 						<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.subject }</a>
 						</td>
@@ -46,6 +48,25 @@
 						<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.processing }</a>
 						</td>
 					</tr>
+					</c:if>
+					<c:if test="${goodsVO.processing ne '입찰중' }">
+					<tr>
+						<td>${goodsVO.subject }</a>
+						</td>
+						<!-- <td><a href="/goods/read?goods_no=${goodsVO.goods_no}">${goodsVO.subject }</a>
+						</td> -->
+						<td>${goodsVO.size }</a>
+						</td>
+						<td>${goodsVO.material }</a>
+						</td>
+						<td><fmt:formatDate value="${goodsVO.date}" pattern="yyyy년MM월dd일"/></a>
+						</td>
+						<td>${goodsVO.addr1 }</a>
+						</td>
+						<td>${goodsVO.processing }</a>
+						</td>
+					</tr>
+					</c:if>
 				</c:forEach>
 			</table>
 		</td>

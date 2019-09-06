@@ -113,6 +113,7 @@ public class GoodsController {
 		pageMaker.setTotalCount(service.listCountCriteria(cri));
 
 		model.addAttribute("pageMaker", pageMaker);
+	
 	}
 	
 	
@@ -121,15 +122,17 @@ public class GoodsController {
 		@RequestMapping(value = "/myList", method = RequestMethod.GET)
 		public void myList(@RequestParam("mem_id") String mem_id, Criteria cri, Model model) throws Exception {
 			//logger.info(cri.toString());
-		System.out.println(mem_id);
+		//System.out.println(mem_id);
 			model.addAttribute("list", service.listCriteria(cri));
 			model.addAttribute("list", service.myList(mem_id));
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 			//pageMaker.setTotalCount(20);
 			pageMaker.setTotalCount(service.listCountCriteria(cri));
-			System.out.println(mem_id);
+			//System.out.println(mem_id);
 			model.addAttribute("pageMaker", pageMaker);
+			
+			System.out.println("영구없냐");
 			
 		}
 	

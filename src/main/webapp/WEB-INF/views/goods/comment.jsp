@@ -90,7 +90,8 @@ function commentList(){
        // console.log(updateProgress);
        // alert(updateProgress);
         var bno2 = '${goodsVO.goods_no}';
-        alert(bno2);
+       // alert(bno2);
+       // alert(updateProgress);
         
         
         $.ajax({
@@ -100,7 +101,7 @@ function commentList(){
             data : {'updateProgress' :updateProgress, 'bno2':bno2},
             success : function(data){
             	//console.log(data);
-                if(data) commentList(comment_no);                     
+                if(data) commentList();                     
             }
         });
     //});

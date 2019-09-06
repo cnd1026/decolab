@@ -19,7 +19,8 @@ public interface CommentDAO {
     public void deleteComment(int comment_no) throws Exception;
     //견적채택
     public void updateProgress(int bno2) throws Exception;
-    public void updateProgress2(int bno) throws Exception;
+    public int updateProgress2(int bno) throws Exception;
+    
 
 
 }

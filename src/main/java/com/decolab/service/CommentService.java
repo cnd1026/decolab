@@ -18,6 +18,6 @@ public interface CommentService {
     
     public void updateProgress(int bno2) throws Exception;
     
-    public void updateProgress2(int bno) throws Exception;
+    public int updateProgress2(int bno) throws Exception;
 
 }

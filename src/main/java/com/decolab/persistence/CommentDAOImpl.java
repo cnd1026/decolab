@@ -55,8 +55,8 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 	
 	@Override
-	public void updateProgress2(int bno) throws Exception {
-		session.update(namespace+".updateProgress2", bno);		
+	public int updateProgress2(int bno) throws Exception {
+		return session.update(namespace+".updateProgress2", bno);		
 	}
 
 }
