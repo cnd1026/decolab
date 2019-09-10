@@ -17,7 +17,7 @@ public interface GoodsService {
 	public List<GoodsVO> listAll3() throws Exception;
 	public List<GoodsVO> listAll4() throws Exception;
 	public List<GoodsVO> listAll5() throws Exception;
-	public List<GoodsVO> myList(String mem_id) throws Exception;
+	public List<GoodsVO> myList(String mem_name) throws Exception;
 	public List<GoodsVO> listCriteria(Criteria cri) throws Exception;
 	public int listCountCriteria(Criteria cri) throws Exception;
 	public List<GoodsVO> listSearchCriteria(SearchCriteria cri) throws Exception;

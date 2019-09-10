@@ -67,10 +67,10 @@ public class GoodsDAOImpl implements GoodsDAO{
 	}
 	
 	@Override
-	public List<GoodsVO> myList(String mem_id) throws Exception {
+	public List<GoodsVO> myList(String mem_name) throws Exception {
 		System.out.println("여기는 다오 여기는 다오");
 		//System.out.println(mem_id);
-		return session.selectList(namespace+".myList", mem_id);
+		return session.selectList(namespace+".myList", mem_name);
 	}
 	
 	@Override

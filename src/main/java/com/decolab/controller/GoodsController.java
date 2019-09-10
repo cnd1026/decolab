@@ -119,12 +119,12 @@ public class GoodsController {
 	
 	//구매자 목록 페이지
 	@ResponseBody
-		@RequestMapping(value = "/myList", method = RequestMethod.GET)
-		public void myList(@RequestParam("mem_id") String mem_id, Criteria cri, Model model) throws Exception {
+		@RequestMapping(value = "/myList/{mem_name}", method = RequestMethod.GET)
+		public String myList(@PathVariable("mem_name") String mem_name, Criteria cri, Model model) throws Exception {
 			//logger.info(cri.toString());
-		//System.out.println(mem_id);
+		System.out.println(mem_name);
 			model.addAttribute("list", service.listCriteria(cri));
-			model.addAttribute("list", service.myList(mem_id));
+			model.addAttribute("list", service.myList(mem_name));
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 			//pageMaker.setTotalCount(20);
@@ -133,6 +133,7 @@ public class GoodsController {
 			model.addAttribute("pageMaker", pageMaker);
 			
 			System.out.println("영구없냐");
+			return "redirect:/goods/myList";
 			
 		}
 	

@@ -19,7 +19,7 @@ public interface GoodsDAO {
 	public List<GoodsVO> listAll3() throws Exception;
 	public List<GoodsVO> listAll4() throws Exception;
 	public List<GoodsVO> listAll5() throws Exception;
-	public List<GoodsVO> myList(String mem_id) throws Exception;
+	public List<GoodsVO> myList(String mem_name) throws Exception;
 	public List<GoodsVO> listPage(int page) throws Exception;
 	public List<GoodsVO> listCriteria(Criteria cri) throws Exception;
 	public int countPaging(Criteria cri) throws Exception;

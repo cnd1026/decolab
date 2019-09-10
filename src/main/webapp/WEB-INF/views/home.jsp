@@ -293,19 +293,11 @@
 	});
 	
 	//	
-	function myList()	{
-			var member_id = '${sessionScope.mem_name}';
-			//alert(member_id);
-			$.ajax({
-	            url : '/goods/myList',
-	            type : 'get',
-	            data : {'mem_id' : member_id},
-	            success : function(data){	                 
-	            }
-	        });
-			alert("ㄹㄹㄹ");
-			return "redirect:/goods/myList";
-			alert("ㅎㅎㅎ");
+	
+function myList()	{
+	var mem_id = '${sessionScope.mem_name}';
+	alert(mem_id);
+	location.href="/goods/myList?${mem_name}";
 		};		
 	
 	

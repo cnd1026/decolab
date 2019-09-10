@@ -77,10 +77,10 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 	
 	@Override
-	public List<GoodsVO> myList(String mem_id) throws Exception {
+	public List<GoodsVO> myList(String mem_name) throws Exception {
 		//System.out.println("아이디 점검");
 		//System.out.println(mem_id);
-		return dao.myList(mem_id);
+		return dao.myList(mem_name);
 		
 	}
 	
