@@ -297,7 +297,7 @@
 function myList()	{
 	var mem_id = '${sessionScope.mem_name}';
 	alert(mem_id);
-	location.href="/goods/myList?${mem_name}";
+	location.href="/goods/myList?${mem_id}";
 		};		
 	
 	

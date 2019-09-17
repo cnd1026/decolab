@@ -214,6 +214,17 @@ jQuery(document).ready(function() {
 <div style="width:5%"><a href="/member/info?mem_id=${sessionScope.mem_id}">내정보</a></div>
 </c:if>
 <!--  -->
+<!-- 운영자 -->
+<c:if test="${sessionScope.mem_level  == '10'}">
+${sessionScope.mem_name}님 관리좀
+<div style="width:5%"><a href="/admin/membermanagement">회원관리</a></div>
+<div style="width:5%"><a href="/account/sales">정산</a></div>
+<div style="width:5%"><a href="/member/sellermodify">정보수정</a></div>
+<div style="width:5%"><a href="/">나의견적</a></div>
+<div style="width:5%"><a href="/member/logout">로그아웃</a></div>
+<div style="width:5%"><a href="/member/info?mem_id=${sessionScope.mem_id}">내정보</a></div>
+</c:if>
+<!--  -->
 </c:otherwise>
 </c:choose>
 </div>

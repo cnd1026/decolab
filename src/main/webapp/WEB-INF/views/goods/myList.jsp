@@ -31,12 +31,10 @@
 					</td>
 				</tr>
 				<c:forEach var="goodsVO" items="${list}">
-				<c:if test="${sessionScope.mem_id} == goodsVO.writer ">
+				<c:if test="${sessionScope.mem_name} == goodsVO.writer ">
 					<tr>
 						<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.subject }</a>
 						</td>
-						<!-- <td><a href="/goods/read?goods_no=${goodsVO.goods_no}">${goodsVO.subject }</a>
-						</td> -->
 						<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.size }</a>
 						</td>
 						<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.material }</a>

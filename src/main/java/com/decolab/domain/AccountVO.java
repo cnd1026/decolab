@@ -6,8 +6,10 @@ public class AccountVO {
 
 	private int account_no;
 	private String account_name;
-	private String account_price;
+	private int account_price;
 	private Date account_date;
+	private String writer;
+	
 	public int getAccount_no() {
 		return account_no;
 	}
@@ -20,10 +22,11 @@ public class AccountVO {
 	public void setAccount_name(String account_name) {
 		this.account_name = account_name;
 	}
-	public String getAccount_price() {
+	
+	public int getAccount_price() {
 		return account_price;
 	}
-	public void setAccount_price(String account_price) {
+	public void setAccount_price(int account_price) {
 		this.account_price = account_price;
 	}
 	public Date getAccount_date() {
@@ -32,7 +35,10 @@ public class AccountVO {
 	public void setAccount_date(Date account_date) {
 		this.account_date = account_date;
 	}
-	
-	
-	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 }
