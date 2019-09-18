@@ -26,10 +26,7 @@ public interface GoodsDAO {
 	public List<GoodsVO> listSearch(SearchCriteria cri) throws Exception;
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 	public void addAttach(String fullName) throws Exception;
-	
-    
- 
-
-	
+	public void updateGoods(String fullName) throws Exception;
+	public void updategoodsAttach(GoodsVO vo) throws Exception;
 	
 }

@@ -106,8 +106,12 @@ public class GoodsDAOImpl implements GoodsDAO{
 	public void addAttach(String fullName) throws Exception {
 		session.insert(namespace+".addAttach",fullName);		
 	}
-	
-
-	
-
+	@Override
+	public void updateGoods(String fullName) throws Exception{
+		session.update(namespace+".updateGoods",fullName);
+	}
+	@Override
+	public void updategoodsAttach(GoodsVO vo) throws Exception{
+		session.update(namespace+".updategoodsAttach",vo);
+	}
 }

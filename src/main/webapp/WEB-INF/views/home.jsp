@@ -3,7 +3,7 @@
 <%@ include file="./head.jsp" %>
 
 
-<div style="width:100%; height:300px; border-top:0.5px solid gray; display:flex; padding-top:20px;">
+<div style="width:100%; height:600px; border-top:0.5px solid gray; display:flex; padding-top:20px;">
 	<div style="width:15%;height:1px"></div>
 	<!-- 요청서들어갈곳 -->
 	<div class="tabs">
@@ -18,9 +18,9 @@
 			<li><a href="#tab8">서비스</a></li>
 			<li><a href="#tab9">주소</a></li>
 		</ul>
-		<form action="/goods/register" method="post">
+		<form id='goodsForm' role="form" action="/goods/register" method="post">
 		<input type="hidden" name="writer" value="${sessionScope.mem_name }">
-		<div class="tab-content" style="height:180px;">
+		<div class="tab-content">
 			<div id="tab1" class="tab active">
 				<h4>종류</h4>
 				<br>
@@ -153,8 +153,7 @@
 		Deco_lab은어떤곳인가요?<br>
 		<a href="/goods/order">[목록Page]</a> <br>
 		<a href="/goods/processing">[진행목록Page]</a><br>
-		<a href="/goods/finished">[완료목록Page]</a><br>
-		<a href="#" onclick="myList();">[나의목록Page]</a>
+		<a href="/goods/finished">[완료목록Page]</a>
 	</div>
 	<div style="width:15%;height:1px"></div>
 </div>
@@ -170,7 +169,15 @@
 		<!-- 진행내용 -->
 	</div>
 </div>
-
+<style>
+.fileDrop {
+	width: 80%;
+	height: 100px;
+	border: 1px dotted gray;
+	background-color: lightslategrey;
+	margin: auto;
+}
+</style>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -289,18 +296,11 @@
 
 		that.append(str);
 		that.get(0).submit();
-		//수정
 	});
-	
-	//	
-	
-function myList()	{
+	function myList()	{
 	var mem_id = '${sessionScope.mem_name}';
 	alert(mem_id);
 	location.href="/goods/myList?${mem_id}";
 		};		
-	
-	
-	
 </script>
 <%@ include file="./footer.jsp" %>

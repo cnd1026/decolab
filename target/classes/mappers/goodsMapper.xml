@@ -18,6 +18,14 @@
 		insert into goods_attach (fullName, writer) values (#{fullName},LAST_INSERT_ID())
 	</insert>
 	
+	<update id="updateGoods">
+		update goods,goods_attach set goods.design_file = goods_attach.fullName where goods.regdate = goods_attach.regdate;
+	</update>
+
+	<update id="updategoodsAttach">
+		update goods_attach,goods set goods_attach.writer = goods.writer where goods.regdate = goods_attach.regdate;
+	</update>
+	
 	<update id="update">
 		update goods set writer=#{writer}, subject=#{subject}, size=#{size}, material=#{material}, color=#{color}, design_file=#{design_file},
 		wantday=#{wantday}, comment=#{comment}, service=#{service}, zip_code=#{zip_code}, addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3}, addr4=#{addr4}  

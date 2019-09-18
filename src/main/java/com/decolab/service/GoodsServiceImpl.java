@@ -23,13 +23,15 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public void regist(GoodsVO goods) throws Exception	{
 		dao.create(goods);
+		
+		String[] files = goods.getFiles();
+		if(files == null)	{ return; }
+		for(String fullName : files)	{
+			dao.addAttach(fullName);
+			dao.updateGoods(fullName);
+		}
+		dao.updategoodsAttach(goods);
 	}
-	//	String[] files = goods.getFiles();
-	//	if(files == null)	{ return; }
-	//	for(String fileName : files)	{
-	//		dao.addAttach(fileName);
-	//	}
-	//}
 
 	//트랜젝션의 격리 수준을 활용한다.
 	//다른 연결이 커밋하지 않은 데이트는 볼 수 없도록 한다.
