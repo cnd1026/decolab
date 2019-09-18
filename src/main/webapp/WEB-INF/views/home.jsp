@@ -154,6 +154,7 @@
 		<a href="/goods/order">[목록Page]</a> <br>
 		<a href="/goods/processing">[진행목록Page]</a><br>
 		<a href="/goods/finished">[완료목록Page]</a>
+		<a href="#" onclick="myList();">[나의목록Page]</a>
 	</div>
 	<div style="width:15%;height:1px"></div>
 </div>
