@@ -5,8 +5,6 @@ public interface AccountService {
 	public String sales() throws Exception;
 	//총이익
 	public int budget() throws Exception;
-	//월별매출
-	public String monthsales(String datepicker) throws Exception;
 	//선택날짜매출
 	public String choicesales(String datepicker) throws Exception;
 	//선택년월별매출

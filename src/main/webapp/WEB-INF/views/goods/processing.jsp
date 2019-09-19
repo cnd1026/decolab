@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../head.jsp" %>
-
-<table width=1000 border=1>
+<br><br>
+<table width=1000 align=center>
 	<tr>
 		<td colspan=3>
 		</td>
@@ -12,38 +12,66 @@
 		<td width=10>
 		</td>
 		<td width=960>
-			<table width=100%>
-				<tr>
-					<td width=16%>구매자
-					</td>
-					<td width=16%>판매자
-					</td>
-					<td width=16%>종류
-					</td>
-					<td width=16%>일정
-					</td>
-					<td width=16%>상태
-					</td>
-				</tr>
-				<c:forEach var="goodsVO" items="${list}" varStatus="status">
-					
+			<c:if test="${sessionScope.mem_level == '1' }">
+				<table width=100% class="table-striped table-bordered">
 					<tr>
-						<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.writer }</a>
+						<td width=16%>구매자
 						</td>
-						<td>
-							<c:forEach begin="${status.index}" end="${status.index}" var="list2" items="${list2}">
-								${list2.comment_name } 
-							</c:forEach>	
+						<td width=16%>종류
 						</td>
-						<td>${goodsVO.subject }
+						<td width=16%>일정
 						</td>
-						<td><fmt:formatDate value="${goodsVO.date}" pattern="yyyy년MM월dd일"/>						
-						</td>
-						<td>${goodsVO.processing }
+						<td width=16%>상태
 						</td>
 					</tr>
-				</c:forEach>
-			</table>
+					<c:forEach var="goodsVO" items="${list}" varStatus="status">						
+						<tr>
+							<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.writer }</a>
+							</td>
+							<td>${goodsVO.subject }
+							</td>
+							<td><fmt:formatDate value="${goodsVO.date}" pattern="yyyy년MM월dd일"/>						
+							</td>
+							<td>${goodsVO.processing }
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+			<c:if test="${sessionScope.mem_level == '10' }">
+				<table width=100% class="table-striped table-bordered">
+					<tr>
+						<td width=16%>구매자
+						</td>
+						<td width=16%>판매자
+						</td>
+						<td width=16%>종류
+						</td>
+						<td width=16%>일정
+						</td>
+						<td width=16%>상태
+						</td>
+					</tr>
+					<c:forEach var="goodsVO" items="${list}" varStatus="status">
+						
+						<tr>
+							<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.writer }</a>
+							</td>
+							<td>
+								<c:forEach begin="${status.index}" end="${status.index}" var="list2" items="${list2}">
+									${list2.comment_name } 
+								</c:forEach>	
+							</td>
+							<td>${goodsVO.subject }
+							</td>
+							<td><fmt:formatDate value="${goodsVO.date}" pattern="yyyy년MM월dd일"/>						
+							</td>
+							<td>${goodsVO.processing }
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>			
 		</td>
 		<td width=10>
 		</td>

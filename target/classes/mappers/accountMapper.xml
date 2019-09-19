@@ -14,12 +14,6 @@ select sum(account_price) from account
 select sum(account_price) from account
 </select>
 
-<!-- 월별매출 -->
-<select id="monthsales" resultType="string" >
-SELECT sum(account_price), account_date FROM account WHERE DATE(account_date)= #{monthsales}
-</select>
-
-
 <!-- 일별매출 -->
 <select id="choicesales" resultType="string" >
 SELECT sum(account_price), account_date FROM account WHERE DATE(account_date)= #{datepicker}

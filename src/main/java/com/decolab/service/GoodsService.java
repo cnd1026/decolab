@@ -22,7 +22,7 @@ public interface GoodsService {
 	public int listCountCriteria(Criteria cri) throws Exception;
 	public List<GoodsVO> listSearchCriteria(SearchCriteria cri) throws Exception;
 	public int listSearchCount(SearchCriteria cri) throws Exception;
-	
+	public List<String> getAttach(Integer goods_no) throws Exception;
 	
 	
 }

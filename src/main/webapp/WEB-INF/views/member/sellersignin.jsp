@@ -2,10 +2,60 @@
 
 <%@ include file="../head.jsp" %>
 
-<form id='registerForm' role="form" method="post">
+<script type="text/javascript">
+function send() {
+	if (signin.mem_id.value == "") {
+		alert("아이디를 입력하세요.");
+		signin.mem_id.focus();
+		return false;
+	}
+	if (signin.mem_password.value == "") {
+		alert("비번을 입력하세요.");
+		signin.mem_password.focus();
+		return false;
+	}
+	if (signin.mem_password_re.value != signin.mem_password.value) {
+		alert("비밀번호가 같지 않습니다..");
+		signin.mem_password_re.focus();
+		return false;
+	}
+	if (signin.mem_name.value == "") {
+		alert("이름을 입력하세요.");
+		signin.mem_name.focus();
+		return false;
+	}
+	if (signin.mem_mail.value == "") {
+		alert("메일을 입력하세요.");
+		signin.mem_mail.focus();
+		return false;
+	}
+	if (signin.mem_code.value == "") {
+		alert("사업자등록번호를 입력하세요.");
+		signin.mem_code.focus();
+		return false;
+	}
+	if (signin.mem_date.value == "") {
+		alert("생년월일을 입력하세요.");
+		signin.mem_date.focus();
+		return false;
+	}
+	if (signin.mem_zip_code.value == "") {
+		alert("주소를 입력하세요.");
+		signin.mem_zip_code.focus();
+		return false;
+	}
+	if (signin.mem_comment.value == "") {
+		alert("경력을 입력하세요.");
+		signin.mem_comment.focus();
+		return false;
+	}
+}
+</script>
+
+<form id='signin' onsubmit="return send()" method="post">
 <table>
 	<tr>
-		<td>파일첨부</td>
+		<td>프로필사진</td>
 
 		<td><label for="exampleInputEmail1">File DROP Here</label>
 
@@ -36,14 +86,14 @@
 				비밀번호
 			</div>
 			<div style="padding-bottom:25px; padding-left:9%">
-				<input name="mem_password"style="width:90%; height:40px;">
+				<input type=password name="mem_password"style="width:90%; height:40px;">
 			</div>
 			
 			<div style="padding-bottom:10px; padding-left:9%;">
 				비밀번호확인
 			</div>
 			<div style="padding-bottom:25px; padding-left:9%">
-				<input style="width:90%; height:40px;">
+				<input type=password name="mem_password_re" style="width:90%; height:40px;">
 			</div>
 			
 			<div style="padding-bottom:10px; padding-left:9%;">

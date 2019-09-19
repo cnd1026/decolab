@@ -21,11 +21,6 @@ public class AccountDAOImpl implements AccountDAO{
 		return session.selectOne(namespace+".budget");
 	}
 	@Override
-	//월별매출
-	public String monthsales(String datepicker) throws Exception{
-		return session.selectOne(namespace+".monthsales",datepicker);
-	}
-	@Override
 	//선택날짜매출
 	public String choicesales(String datepicker) throws Exception{
 		return session.selectOne(namespace+".choicesales",datepicker);

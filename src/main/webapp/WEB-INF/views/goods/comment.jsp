@@ -152,7 +152,7 @@ function commentDelete(comment_no){
 $(function() {
     $("#insertCommentBtn").click(function(){ //댓글 등록 버튼 클릭시 
         var insertData = $("#insertCommentForm").serialize(); //insertCommentForm의 내용을 가져옴
-        alert(JSON.stringify(insertData));
+        //alert(JSON.stringify(insertData));
         
         $.ajax({
             url : '/comment/insertVisitor',

@@ -11,52 +11,76 @@
 <!-- 이미지를 보여주기 위해 화면상 히든 처리 -->
 <style type="text/css">
 .popup { position: absolute;}
-.back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
+.back { background-color: gray; opacity:0.5; width: 200px; height: 300px; overflow:hidden;  z-index:1101;}
 .front {
 	z-index:1110; opacity:1; boarder:1px; margin: auto; 
 }
 .show{
 	position:relative;
-	max-width: 1200px; 
-	max-height: 800px; 
+	max-width: 800px; 
+	max-height: 900px; 
 	overflow: auto;       
 }
 </style>
 
-<div class='popup back' style="display:none;"></div>
-<div id="popup_front" class='popup front' style="display:none;">
-	<img id="popup_img">
-</div>
-<!-- 추가 끝 -->
-<table border=1>
+
+
+<table class="table-striped table-bordered" align="center"style="text-align:center; height:500px">
 	<tr>
-		<td width=70>아이디</td>
-		<td width=500>${member2VO.mem_id }</td>
-	</tr>
-	<tr>
-		<td>이름</td>
-		<td>${member2VO.mem_name }</td>
-	</tr>
-	<tr>
-		<td>경력</td>
-		<td>${member2VO.mem_comment }</td>
+		<td>
+			<table>
+				<tr>
+					<td width=100>아이디</td>
+					<td width=200>${member2VO.mem_id }</td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td>${member2VO.mem_name }</td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td>${member2VO.mem_mail }</td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td>${member2VO.mem_date }</td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td>${member2VO.mem_zip_code }</td>
+				</tr>
+				<tr>
+					<td>사업자등록번호</td>
+					<td>${member2VO.mem_code }</td>
+				</tr>
+				<tr>
+					<td>경력</td>
+					<td>${member2VO.mem_comment }</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+				<!-- 첨부파일 출력 부분 추가 -->
+			<div class="mailbox-attachments clearfix uploadedList" style="display:table">
+				<div class='popup back' style="display:none;"></div>
+				<div id="popup_front" class='popup front' style="display:none;">
+					<img id="popup_img">
+				</div>
+			</div>
+		</td>
 	</tr>
 </table>
-<!-- 추가 시작 2 --> 
-<!-- 첨부파일 출력 부분 추가 -->
-<ul class="mailbox-attachments clearfix uploadedList"></ul>
 
 <!-- 첨부파일 출력에 관한 스크립트 -->
-
 <script id="templateAttach" type="text/x-handlebars-template">
-<li data-src='{{fullName}}'>
-	<span class="mailbox-attachment-icon has-img"><img src="{{imgsrc}}" alt="Attachment"></span>
-	<div class="mailbox-attachment-info">
-		<a href="{{getLink}}" class="mailbox-attachment-name">{{fileName}}</a>
-	</div>
-</li>
+<div class="mailbox-attachment-info" data-src='{{fullName}}'>
+	<a href="{{getLink}}" class="mailbox-attachment-name">
+	<span class="mailbox-attachment-icon has-img">
+	<img src="{{imgsrc}}" alt="Attachment">
+	</span>
+	</a>
+</div>
 </script> 
-
 <script>
 //첨부파일 정보
 	var mem_id = ${member2VO.mem_id};
@@ -95,6 +119,5 @@
 		$(".popup").hide('slow');
 	});
 </script>
-<!-- 추가 끝 2 --> 
 
 <%@ include file="../footer.jsp" %>

@@ -114,4 +114,8 @@ public class GoodsDAOImpl implements GoodsDAO{
 	public void updategoodsAttach(GoodsVO vo) throws Exception{
 		session.update(namespace+".updategoodsAttach",vo);
 	}
+	@Override
+	public List<String> getAttach(Integer goods_no) throws Exception {
+		return session.selectList(namespace+".getAttach", goods_no);
+	}
 }

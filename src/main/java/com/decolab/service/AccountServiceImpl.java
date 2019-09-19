@@ -20,11 +20,6 @@ public class AccountServiceImpl implements AccountService{
 		return dao.budget();
 	}
 	@Override
-	//월별날짜매출
-	public String monthsales(String datepicker) throws Exception{
-		return dao.monthsales(datepicker);
-	}
-	@Override
 	//선택날짜매출
 	public String choicesales(String datepicker) throws Exception{
 		return dao.choicesales(datepicker);

@@ -1,23 +1,13 @@
 package com.decolab.controller;
 
-import java.awt.Desktop.Action;
-import java.io.IOException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -181,6 +171,12 @@ public class GoodsController {
 		//System.out.println("dada");
 		//logger.info("되고 있는가...");
 		model.addAttribute(service.read(goods_no));
+	}
+	@RequestMapping("/getAttach/{goods_no}")
+	@ResponseBody
+	public List<String> getAttach(@PathVariable("goods_no")Integer goods_no)throws Exception{
+		logger.info("되고 있는가...");
+		return service.getAttach(goods_no);
 	}
 	
 	@RequestMapping(value = "/removePage/", method = RequestMethod.GET)

@@ -150,11 +150,19 @@
 	</div>
 	<!-- 요청서끝 -->
 	<div style="width:30%; padding-left:30px;">
-		Deco_lab은어떤곳인가요?<br>
-		<a href="/goods/order">[목록Page]</a> <br>
+		Deco_lab은어떤곳인가요?<br><br><br>
+		<!-- <a href="/goods/order">[목록Page]</a> <br>
 		<a href="/goods/processing">[진행목록Page]</a><br>
 		<a href="/goods/finished">[완료목록Page]</a>
-		<a href="#" onclick="myList();">[나의목록Page]</a>
+		<a href="#" onclick="myList();">[나의목록Page]</a> -->
+		&nbsp;&nbsp;세월이 흐르고 손때가 묻을수록 가치를 더해가는 나만의 가구를 만나 보세요.<br><br>
+
+		- 고객과 판매자 간 1:1 상담을 통해서 디자인하고, 손으로 정성껏 만드는 핸드메이드 제품입니다. <br>
+		&nbsp;&nbsp;원하시는 형태와 재질, 크기로 설계하여 설치할 공간에 꼭 맞도록 맞춤 제작됩니다.<br>
+		<br>
+		- 원목으로는 소나무, 편백나무를 이용하고 그 외의 재질에도 화학성분이 미검출된 인증된 자재를 이용하여 가구를 제작합니다.<br>
+		&nbsp;&nbsp;흔한 MDF(Medium Density Fiberboard, 중밀도합판) 가구들처럼 책장 선반이 휘어지거나 
+		금방 망가질 걱정이 없습니다.<br>&nbsp;&nbsp;원목으로 튼튼하게 제작된 데코연구소의 가구들은 10년 이상 믿고 사용하실 수 있습니다.<br>
 	</div>
 	<div style="width:15%;height:1px"></div>
 </div>

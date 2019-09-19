@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../head.jsp" %>
 
-<form id='loginForm' action="/member/loginPost" method="post">
+<script type="text/javascript">
+function send() {
+	if (login.mem_id.value == "") {
+		alert("아이디를 입력하세요.");
+		signin.mem_id.focus();
+		return false;
+	}
+	if (signin.mem_password.value == "") {
+		alert("비번을 입력하세요.");
+		signin.mem_password.focus();
+		return false;
+	}
+}
+</script>
+<form id='login' onsubmit="return send()" action="/member/loginPost" method="post">
 
 <table>
 	<tr>

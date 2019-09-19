@@ -28,5 +28,6 @@ public interface GoodsDAO {
 	public void addAttach(String fullName) throws Exception;
 	public void updateGoods(String fullName) throws Exception;
 	public void updategoodsAttach(GoodsVO vo) throws Exception;
+	public List<String> getAttach(Integer goods_no) throws Exception;
 	
 }

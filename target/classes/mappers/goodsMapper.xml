@@ -15,7 +15,7 @@
 	</select>	
 	
 	<insert id="addAttach">
-		insert into goods_attach (fullName, writer) values (#{fullName},LAST_INSERT_ID())
+		insert into goods_attach (fullName, goods_no) values (#{fullName},LAST_INSERT_ID())
 	</insert>
 	
 	<update id="updateGoods">
@@ -23,8 +23,12 @@
 	</update>
 
 	<update id="updategoodsAttach">
-		update goods_attach,goods set goods_attach.writer = goods.writer where goods.regdate = goods_attach.regdate;
+		update goods_attach,goods set goods_attach.goods_no = goods.goods_no where goods.regdate = goods_attach.regdate;
 	</update>
+	
+	<select id="getAttach" resultType="string">
+		select fullName from goods_attach where goods_no = #{goods_no}
+	</select>
 	
 	<update id="update">
 		update goods set writer=#{writer}, subject=#{subject}, size=#{size}, material=#{material}, color=#{color}, design_file=#{design_file},

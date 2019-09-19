@@ -106,7 +106,10 @@ public class GoodsServiceImpl implements GoodsService{
 		return dao.listSearchCount(cri);
 	}
 	
-
+	@Override
+	public List<String> getAttach(Integer goods_no) throws Exception {
+		return dao.getAttach(goods_no);
+	}
 	
 	
 		

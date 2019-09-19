@@ -1,5 +1,9 @@
 package com.decolab.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -18,27 +22,28 @@ public class AccountController {
 	private AccountService service;
 	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 	
-	@RequestMapping(value = "/sales", method = RequestMethod.GET)
-	public String salesGET(Model model,String datepicker) throws Exception {
-		logger.info("account get ...........");
+	@RequestMapping(value = "/yearsales", method = RequestMethod.GET)
+	public String yearsalesGET(Model model,String year,String datepicker,Locale locale) throws Exception {
+		logger.info("year get ...........");
+		
+		if( service.choicesales(datepicker) == "" ||  service.choicesales(datepicker) ==null) {
+			model.addAttribute("choicesales", "0");
+		}else {
+			model.addAttribute("choicesales", service.choicesales(datepicker));
+		}
+		
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+		Date time = new Date();
+		String time1 = format1.format(time);
+
+		if( datepicker == "" ||  datepicker ==null) {
+			model.addAttribute("date", time1);
+		}else {
+			model.addAttribute("date", datepicker);
+		}
 		
 		model.addAttribute("totalsales", service.sales());
 		model.addAttribute("budget", service.budget());
-		model.addAttribute("choicesales", service.choicesales(datepicker));
-		
-		model.addAttribute("date", datepicker);
-		
-		return"/account/sales";
-	}
-	@RequestMapping(value = "/sales", method = RequestMethod.POST)
-	public String salesPOST(Model model) throws Exception {
-		
-		return "/account/sales";
-		
-	}
-	@RequestMapping(value = "/yearsales", method = RequestMethod.GET)
-	public String yearsalesGET(Model model,String year) throws Exception {
-		logger.info("year get ...........");
 		
 		model.addAttribute("Jan", service.Jan(year));
 		model.addAttribute("Feb", service.Feb(year));
@@ -56,6 +61,5 @@ public class AccountController {
 		model.addAttribute("Dec", service.Dec(year));
 		
 		return "/account/yearsales";
-		
 	}
 }

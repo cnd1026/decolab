@@ -194,33 +194,38 @@ jQuery(document).ready(function() {
 	</c:when>
 	<c:otherwise>
 	<div style="width:10%"><a href="/"><img src="/resources/images/decologo.png" style="width:50%;height:70px;"></a></div>
-	<p>name:${sessionScope.mem_name }</p>
-<p>id:${sessionScope.mem_id }</p>
-<p>level:${sessionScope.mem_level }</p>
+	<p>이름:${sessionScope.mem_name }</p>&nbsp;&nbsp;
+<p>id:${sessionScope.mem_id }</p>&nbsp;&nbsp;
+<p>level:<c:if test="${sessionScope.mem_level  == '1'}">일반회원</c:if>
+<c:if test="${sessionScope.mem_level  == '2'}">판매자</c:if>
+<c:if test="${sessionScope.mem_level  == '10'}">운영자</c:if>
+
+</p>
 <!-- 일반회원 -->
-<c:if test="${sessionScope.mem_level  == '1'}">
+<c:if test="${sessionScope.mem_level  == '1'}">&nbsp;&nbsp;&nbsp;<div style="width:5%"><a href="/"></a></div>
 <div style="width:5%"><a href="/member/modify">정보수정</a></div>
-<div style="width:5%"><a href="/">나의견적</a></div>
+<div style="width:5%"><a href="/goods/processing">견적보기</a></div>
 <div style="width:5%"><a href="/member/logout">로그아웃</a></div>
 </c:if>
 <!--  -->
 <!-- 판매자 -->
 <c:if test="${sessionScope.mem_level  == '2'}">
-<div style="width:5%"><a href="/">나의경력</a></div>
-<div style="width:5%"><a href="/">정산</a></div>
-<div style="width:5%"><a href="/member/sellermodify">정보수정</a></div>
-<div style="width:5%"><a href="/">나의견적</a></div>
+
+<div style="width:5%"><a href="/"></a></div>
+<div style="width:5%"><a href="/member/info?mem_id=${sessionScope.mem_id}">나의 경력</a></div>&nbsp;&nbsp;
+<div style="width:5%"><a href="/goods/order">견적요청</a></div>&nbsp;&nbsp;
+<div style="width:5%"><a href="/member/sellermodify">정보수정</a></div>&nbsp;&nbsp;
 <div style="width:5%"><a href="/member/logout">로그아웃</a></div>
-<div style="width:5%"><a href="/member/info?mem_id=${sessionScope.mem_id}">내정보</a></div>
+
 </c:if>
 <!--  -->
 <!-- 운영자 -->
 <c:if test="${sessionScope.mem_level  == '10'}">
-${sessionScope.mem_name}님 관리좀
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div style="width:5%"><a href="/admin/membermanagement">회원관리</a></div>
-<div style="width:5%"><a href="/account/sales">정산</a></div>
+<div style="width:5%"><a href="/account/yearsales">정산</a></div>
 <div style="width:5%"><a href="/member/sellermodify">정보수정</a></div>
-<div style="width:5%"><a href="/">나의견적</a></div>
+<div style="width:5%"><a href="/goods/processing">견적상황</a></div>
 <div style="width:5%"><a href="/member/logout">로그아웃</a></div>
 <div style="width:5%"><a href="/member/info?mem_id=${sessionScope.mem_id}">내정보</a></div>
 </c:if>
