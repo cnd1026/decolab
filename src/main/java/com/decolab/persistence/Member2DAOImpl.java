@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.decolab.domain.GoodsVO;
 import com.decolab.domain.Member2VO;
 
 @Repository
@@ -67,6 +68,9 @@ public class Member2DAOImpl implements Member2DAO{
 	@Override
 	public Member2VO read(String mem_id) throws Exception {
 		return sqlSession.selectOne(namespace+".read", mem_id);
-
+	}
+	@Override
+	public List<GoodsVO> dog(String mem_name) throws Exception {
+		return sqlSession.selectList(namespace+".dog", mem_name);
 	}
 }

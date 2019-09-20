@@ -21,40 +21,40 @@ SELECT sum(account_price), account_date FROM account WHERE DATE(account_date)= #
 
 <!--선택년월별매출  -->
 <select id="Jan" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-01%"
+SELECT sum(account_price) FROM account where account_date between "2019-01-01" and "2019-01-31"
 </select>
 <select id="Feb" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-02%"
+SELECT sum(account_price) FROM account where account_date between "2019-02-01" and "2019-02-28"
 </select>
 <select id="Mar" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-03%"
+SELECT sum(account_price) FROM account where account_date between "2019-03-01" and "2019-03-31"
 </select>
 <select id="Apr" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-04%"
+SELECT sum(account_price) FROM account where account_date between "2019-04-01" and "2019-04-30"
 </select>
 <select id="May" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-05%"
+SELECT sum(account_price) FROM account where account_date between "2019-05-01" and "2019-05-31"
 </select>
 <select id="Jun" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-06%"
+SELECT sum(account_price) FROM account where account_date between "2019-06-01" and "2019-06-30"
 </select>
 <select id="Jul" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-07%"
+SELECT sum(account_price) FROM account where account_date between "2019-07-01" and "2019-07-31"
 </select>
 <select id="Aug" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-08%"
+SELECT sum(account_price) FROM account where account_date between "2019-08-01" and "2019-08-31"
 </select>
 <select id="Sep" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-09%"
+SELECT sum(account_price) FROM account where account_date between "2019-09-01" and "2019-09-30"
 </select>
 <select id="Oct" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-10%"
+SELECT sum(account_price) FROM account where account_date between "2019-10-01" and "2019-10-31"
 </select>
 <select id="Nov" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-11%"
+SELECT sum(account_price) FROM account where account_date between "2019-11-01" and "2019-11-30"
 </select>
 <select id="Dec" resultType="string" >
-SELECT sum(account_price) FROM account where account_date like "2019-12%"
+SELECT sum(account_price) FROM account where account_date between "2019-12-01" and "2019-12-31"
 </select>
 
 </mapper>

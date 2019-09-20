@@ -172,6 +172,12 @@ public class GoodsController {
 		//logger.info("되고 있는가...");
 		model.addAttribute(service.read(goods_no));
 	}
+	@RequestMapping(value = "/readP", method = RequestMethod.GET)
+	public void readp(@RequestParam("goods_no") int goods_no, Model model) throws Exception {
+		System.out.println("dada");
+		//logger.info("되고 있는가...");
+		model.addAttribute(service.read(goods_no));
+	}
 	@RequestMapping("/getAttach/{goods_no}")
 	@ResponseBody
 	public List<String> getAttach(@PathVariable("goods_no")Integer goods_no)throws Exception{

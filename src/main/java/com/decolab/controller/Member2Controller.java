@@ -119,4 +119,11 @@ public class Member2Controller {
 
 			return service2.getAttach(mem_id);
 		}
+		//나의견적
+		@RequestMapping(value = "/dogenemy", method = RequestMethod.GET)
+		public void dogGET(String mem_name, Model model) throws Exception {
+			logger.info(mem_name);
+			model.addAttribute("goods", service2.dog(mem_name));
+			
+		}
 }

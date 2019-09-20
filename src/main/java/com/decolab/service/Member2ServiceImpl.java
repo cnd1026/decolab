@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.decolab.domain.GoodsVO;
 import com.decolab.domain.Member2VO;
 import com.decolab.persistence.Member2DAO;
 
@@ -22,20 +23,21 @@ public class Member2ServiceImpl implements Member2Service {
 		dao.insertMember(vo2);
 	}
 	//판매자회원
-	@Transactional
-	@Override
-	public void insertSMember(Member2VO vo2) throws Exception{
-		dao.insertSMember(vo2);
-		
-		String[] files = vo2.getFiles();
+		@Transactional
+		@Override
+		public void insertSMember(Member2VO vo2) throws Exception{
+			dao.insertSMember(vo2);
+			
+			String[] files = vo2.getFiles();
 
-		if(files == null) { return; }
+			if(files == null) { return; }
 
-		for(String fileName : files) {
-
-			dao.addAttach(fileName);
+			for(String fullName : files) {
+				dao.addAttach(fullName);
+				dao.updateSMember(fullName);
+			}
+			dao.updateaddAttach(vo2);
 		}
-	}
 	//로그인
 	@Override
 	public boolean login2(Member2VO vo2, HttpSession session) throws Exception {
@@ -71,6 +73,12 @@ public class Member2ServiceImpl implements Member2Service {
 	@Override
 	public Member2VO read(String mem_id) throws Exception {
 		return dao.read(mem_id);
+	}
+	
+	//견적
+	@Override
+	public List<GoodsVO> dog(String mem_name) throws Exception {
+		return dao.dog(mem_name);
 	}
 }
 

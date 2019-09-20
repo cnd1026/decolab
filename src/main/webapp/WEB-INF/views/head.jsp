@@ -204,7 +204,7 @@ jQuery(document).ready(function() {
 <!-- 일반회원 -->
 <c:if test="${sessionScope.mem_level  == '1'}">&nbsp;&nbsp;&nbsp;<div style="width:5%"><a href="/"></a></div>
 <div style="width:5%"><a href="/member/modify">정보수정</a></div>
-<div style="width:5%"><a href="/goods/processing">견적보기</a></div>
+<div style="width:5%"><a href="/member/dogenemy?mem_name=${sessionScope.mem_name}">견적보기</a></div>
 <div style="width:5%"><a href="/member/logout">로그아웃</a></div>
 </c:if>
 <!--  -->

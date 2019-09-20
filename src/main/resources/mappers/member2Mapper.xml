@@ -10,7 +10,7 @@
 		insert into member2 (mem_id, mem_password, mem_name, mem_mail,mem_level) values 
 		(#{mem_id},#{mem_password},#{mem_name},#{mem_mail},1)
 	</insert>
-	
+
 	<!-- 판매자가입 -->
 	<insert id="insertSMember">
 		insert into member2 
@@ -57,4 +57,8 @@
 		where
 			mem_id = #{mem_id}
 	</update>
+	<!-- 견적 -->
+	<select id="dog" resultType="GoodsVO">
+		select * from goods where writer = #{mem_name}
+	</select>
 </mapper>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../head.jsp" %>
-
 <script type="text/javascript">
 function send() {
 	if (signin.mem_id.value == "") {
@@ -51,29 +50,23 @@ function send() {
 	}
 }
 </script>
+<form id='registerForm' role="form" method="post">
 
-<form id='signin' onsubmit="return send()" method="post">
-<table>
-	<tr>
-		<td>프로필사진</td>
-
-		<td><label for="exampleInputEmail1">File DROP Here</label>
-
-			<div class="fileDrop"></div>
-
-			<ul class="uploadedList"></ul>
-
-		</td>
-		</tr>
-</table>
 <div style="width:60%; height:700px; margin:0 auto; padding-bottom:40px;">
 
 	<div style="text-align:center; padding-top:30px; padding-bottom:40px">
 		<b style="font-size:23px">Deco_LAB에 오신 것을 환영합니다</b>
 	</div>
 	
-	<div style="border:1px solid gray; border-radius:4px; display:table; width:100%">
-		<div style=" float:left; width:50%; ">
+	<div style="display:table; width:100%;">
+		<div style=" float:left; width:10%;  padding-top:20px;">
+		
+		<label for="exampleInputEmail1">프로필사진<br>drag&drop</label>
+		<div class="fileDrop"><span class="uploadedList"></span></div>
+		
+
+		</div>
+		<div style=" float:left; width:40%; ">
 		
 			<div style="padding-bottom:10px; padding-left:9%; padding-top:20px;">
 				아이디
@@ -93,7 +86,7 @@ function send() {
 				비밀번호확인
 			</div>
 			<div style="padding-bottom:25px; padding-left:9%">
-				<input type=password name="mem_password_re" style="width:90%; height:40px;">
+				<input type=password style="width:90%; height:40px;">
 			</div>
 			
 			<div style="padding-bottom:10px; padding-left:9%;">
@@ -111,7 +104,7 @@ function send() {
 			</div>
 		</div>
 		
-		<div style=" float:left; width:50%; ">
+		<div style=" float:left; width:40%; ">
 			<div style="padding-bottom:10px; padding-left:9%; padding-top:20px;">
 				사업자등록번호
 			</div>
@@ -147,17 +140,16 @@ function send() {
 				</button>
 			</div>
 		</div>
-		
+	
 	</div>
 </div>
 </form>
 <style>
 .fileDrop {
-	width: 80%;
+	width: 100%;
 	height: 100px;
 	border: 1px dotted gray;
-	background-color: lightslategrey;
-	margin: auto;
+	text-align:center;
 }
 </style>
 
@@ -166,13 +158,13 @@ function send() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="template" type="text/x-handlebars-template">
-<li>
+
 	<span><img src="{{imgsrc}}"></span>
-	<div>
+	
 		<a href="{{getLink}}">{{fileName}}</a>
 		<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove">삭제</i></a>
-	</div>
-</li>
+	
+
 </script>
 
 <script>

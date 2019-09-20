@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.decolab.domain.GoodsVO;
 import com.decolab.domain.Member2VO;
 
 public interface Member2DAO {
@@ -27,4 +28,6 @@ public interface Member2DAO {
 	//정보조회
 	public List<String> getAttach(String mem_id) throws Exception;
 	public Member2VO read(String mem_id) throws Exception;
+	//견적
+	public List<GoodsVO> dog(String mem_name) throws Exception;
 }

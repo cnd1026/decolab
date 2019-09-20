@@ -68,54 +68,62 @@ min-width:1000px;
 	<input type="hidden" id="nowYear" name="nowYear" value="${saleVO.nowYear}">
 	<!-- 1월 -->
 	<div class="monthLabel">
-		<div>Jan</div>
+		<div>1월</div>
 		<hr>
 		<c:choose>
 			<c:when test="${empty Jan}">
 				<div><input type="text" class="inputSel" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="${Jan}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Jan}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>
 	<!-- 2월 -->
 	<div class="monthLabel">
-		<div>Feb</div>
+		<div>2월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Feb}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Feb" name="Feb" value="${Feb}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Feb}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>	
 	<!-- 3월 -->
 	<div class="monthLabel">
-		<div>Mar</div>
+		<div>3월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Mar}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Mar" name="Mar" value="${Mar}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Mar}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 4월 -->
 	<div class="monthLabel">
-		<div>Apr</div>
+		<div>4월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Apr}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Apr" name="Apr" value="${Apr}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Apr}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
@@ -125,56 +133,64 @@ min-width:1000px;
 <div class="space">
 	<!-- 5월 -->
 	<div class="monthLabel">
-		<div>May</div>
+		<div>5월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty May}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="May" name="May" value="${May}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${May}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 6월 -->
 	<div class="monthLabel">
-		<div>Jun</div>
+		<div>6월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Jun}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Jun" name="Jun" value="${Jun}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Jun}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 7월 -->
 	<div class="monthLabel">
-		<div>Jul</div>
+		<div>7월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Jul}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Jul" name="Jul" value="${Jul}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Jul}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 8월 -->
 	<div class="monthLabel">
-		<div>Aug</div>
+		<div>8월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Aug}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Aug" name="Aug" value="${Aug}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Aug}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
@@ -184,79 +200,90 @@ min-width:1000px;
 <div class="space">
 	<!-- 9월 -->
 	<div class="monthLabel">
-		<div>Sep</div>
+		<div>9월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Sep}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Sep" name="Sep" value="${Sep}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Sep}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 10월 -->
 	<div class="monthLabel">
-		<div>Oct</div>
+		<div>10월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Oct}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Oct" name="Oct" value="${Oct}" readOnly></div>	
+				<div>
+					<fmt:formatNumber value="${Oct}" pattern="#,###"/>원
+				</div>	
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 11월 -->
 	<div class="monthLabel">
-		<div>Nov</div>
+		<div>11월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Nov}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Nov" name="Nov" value="${Nov}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Nov}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 	<!-- 12월 -->
 	<div class="monthLabel">
-		<div>Dec</div>
+		<div>12월</div>
 		<hr>
 			<c:choose>
 			<c:when test="${empty Dec}">
 				<div><input type="text" class="inputSel" id="Jan" name="Jan" value="0" readOnly></div>
 			</c:when>
 			<c:otherwise>
-				<div><input type="text" class="inputSel" id="Dec" name="Dec" value="${Dec}" readOnly></div>
+				<div>
+					<fmt:formatNumber value="${Dec}" pattern="#,###"/>원
+				</div>
 			</c:otherwise>
 		</c:choose>
 		
 	</div>
 </div>
-<div style="width:50%; margin:auto;">
-	<div style="width:50%; height:50px;float:right;">
+
+<div style="width:65%; margin:auto;">
+	<div style="width:50%; height:50px;float:right;text-align:right;">
 		<h5>총매출<fmt:formatNumber value="${totalsales}" pattern="#,###"/>원</h5>
+		<h5>총이익<fmt:formatNumber value="${budget*0.15}" pattern="#,###"/>원</h5>
 	</div>
 	<div style="width:50%;  height:50px;float:right;">
-		<h5>총이익<fmt:formatNumber value="${budget*0.15}" pattern="#,###"/>원</h5>
+	
 	</div>
 	<form id='choicesales' action="/account/yearsales">
 	<div style="width:50%; height:50px;float:right;" id="choicesales">
 		<h5>${date }매출<fmt:formatNumber value="${choicesales}" pattern="#,###"/>원</h5>
 	</div>
 	<div style="width:50%; height:50px;float:right;">
-		일자: <input type="text" id="datepicker" name="datepicker" value="${date }" readOnly>
+		일별 매출 검색: <input type="text" id="datepicker" name="datepicker" value="${date }" readOnly>
 		<button type="submit">검색</button>
 	</div>
 	</form>
 <%@ include file="./sales.jsp" %>
-	    <script>
+</div>
+    <script>
 	    $(document).ready(function(){
             //input을 datepicker로 선언
             $("#datepicker").datepicker({
@@ -282,5 +309,4 @@ min-width:1000px;
             $('#datepicker').datepicker(); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)             
         });
     </script>
-</div>
 <%@ include file="../footer.jsp" %>
