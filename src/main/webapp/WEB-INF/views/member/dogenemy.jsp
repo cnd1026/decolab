@@ -51,6 +51,27 @@
 		</td>
 	</tr>
 		</c:if>
+		<c:if test="${goods.processing=='입금전'}">
+			<input type="hidden" id="goods_no" name="goods_no" value="${goods.goods_no }" />			
+		<tr>
+		<td>
+			<a href="/goods/readP?goods_no=${goods.goods_no}">${goods.subject }</a>
+		</td>
+		<td>
+			<a href="/goods/readP?goods_no=${goods.goods_no}">${goods.material }</a>
+		</td>
+		<td>
+			<a href="/goods/readP?goods_no=${goods.goods_no}">${goods.color }</a>
+		</td>
+		
+		<td>
+			<a href="/goods/readP?goods_no=${goods.goods_no}">${goods.wantday }</a>
+		</td>
+		<td>
+			<a href="/goods/readP?goods_no=${goods.goods_no}">${goods.processing }</a>
+		</td>
+	</tr>
+		</c:if>
 </c:forEach>
 		
 		</td>

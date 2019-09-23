@@ -273,12 +273,15 @@ min-width:1000px;
 	
 	</div>
 	<form id='choicesales' action="/account/yearsales">
-	<div style="width:50%; height:50px;float:right;" id="choicesales">
+	<div style="width:50%; height:50px; float:right; text-align:right;" id="choicesales">
 		<h5>${date }매출<fmt:formatNumber value="${choicesales}" pattern="#,###"/>원</h5>
 	</div>
-	<div style="width:50%; height:50px;float:right;">
+	<div style="width:50%; height:50px;float:right; text-align:right; ">
 		일별 매출 검색: <input type="text" id="datepicker" name="datepicker" value="${date }" readOnly>
 		<button type="submit">검색</button>
+	</div>
+	<div style="width:50%; height:50px;float:right;">
+		
 	</div>
 	</form>
 <%@ include file="./sales.jsp" %>

@@ -39,7 +39,31 @@
 				</table>
 			</c:if>
 			<c:if test="${sessionScope.mem_level == '10' }">
-				<table width=100% class="table-striped table-bordered">
+			<table width=100% class="table-striped table-bordered">
+					<tr>
+						<td width=16%>구매자
+						</td>
+						<td width=16%>종류
+						</td>
+						<td width=16%>일정
+						</td>
+						<td width=16%>상태
+						</td>
+					</tr>
+					<c:forEach var="goodsVO" items="${list}" varStatus="status">						
+						<tr>
+							<td><a href="/goods/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&goods_no=${goodsVO.goods_no}">${goodsVO.writer }</a>
+							</td>
+							<td>${goodsVO.subject }
+							</td>
+							<td><fmt:formatDate value="${goodsVO.date}" pattern="yyyy년MM월dd일"/>						
+							</td>
+							<td>${goodsVO.processing }
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<%-- <table width=100% class="table-striped table-bordered">
 					<tr>
 						<td width=16%>구매자
 						</td>
@@ -70,7 +94,7 @@
 							</td>
 						</tr>
 					</c:forEach>
-				</table>
+				</table> --%>
 			</c:if>			
 		</td>
 		<td width=10>

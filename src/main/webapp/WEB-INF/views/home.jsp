@@ -86,8 +86,8 @@
 				<h4>디자인</h4><br>
 				<input type="text" name="design_file" style="width:400px; height:30px;" placeholder="ex)장인에게 맡긴다 또는 아래 디자인파일 업로드">
 				<div><label for="exampleInputEmail1">사진을 이곳에 올려주세요</label>				
-					<div class="fileDrop"></div>				
-					<ul class="uploadedList"></ul>				
+					<div class="fileDrop">				
+					<span class="uploadedList"></span></div>				
 				</div>
 				<ul class="tab-links">
 					<li><a href="#back_tab1" class="prevButton">Prev</a> <a
@@ -180,11 +180,9 @@
 </div>
 <style>
 .fileDrop {
-	width: 80%;
+	width: 50%;
 	height: 100px;
 	border: 1px dotted gray;
-	background-color: lightslategrey;
-	margin: auto;
 }
 </style>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -253,13 +251,9 @@
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">
-<li>
 	<span><img src="{{imgsrc}}"></span>
-	<div>
 		<a href="{{getLink}}">{{fileName}}</a>
 		<a href="{{fullName}}" class="btn btn-default btn-xs pull-right delbtn"><i class="fa fa-fw fa-remove">삭제</i></a>
-	</div>
-</li>
 </script>
 
 <script>
